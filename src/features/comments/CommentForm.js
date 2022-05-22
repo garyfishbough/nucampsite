@@ -1,9 +1,9 @@
-import { Button, Modal, ModalHeader, ModalBody, FormGroup, Label } from "reactstrap";
-import { useState } from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import { validateCommentForm } from "../../utils/validateCommentForm";
+import {Button, Modal, ModalHeader, ModalBody, FormGroup, Label} from "reactstrap";
+import {useState} from "react";
+import {Formik, Field, Form, ErrorMessage} from "formik";
+import {validateCommentForm} from "../../utils/validateCommentForm";
 
-const CommentForm = ({ campsiteId }) => {
+const CommentForm = ({campsiteId}) => {
     const [modalOpen, setModalOpen] = useState(false);
     const handleSubmit = (values) => {
         const comment = {
@@ -18,7 +18,7 @@ const CommentForm = ({ campsiteId }) => {
     return (
         <>
             <Button outline onClick={() => setModalOpen(true)}>
-                <i className="fa fa-pencil fa-lg" /> Add comment
+                <i className="fa fa-pencil fa-lg"/> Add comment
             </Button>
             <Modal isOpen={modalOpen}>
                 <ModalHeader toggle={() => setModalOpen(false)}>Add Comment</ModalHeader>
