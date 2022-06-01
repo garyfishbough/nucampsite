@@ -1,14 +1,14 @@
-import { Button, Modal, ModalHeader, ModalBody, FormGroup, Label } from "reactstrap";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import { validateCommentForm } from "../../utils/validateCommentForm";
-import { addComment } from "./commentsSlice";
+import { Button, Modal, ModalHeader, ModalBody, FormGroup, Label } from "reactstrap"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { Formik, Field, Form, ErrorMessage } from "formik"
+import { validateCommentForm } from "../../utils/validateCommentForm"
+import { postComment } from "./commentsSlice"
 
 const CommentForm = ({ campsiteId }) => {
-    const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false)
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
     const handleSubmit = (values) => {
         const comment = {
@@ -17,15 +17,15 @@ const CommentForm = ({ campsiteId }) => {
             author: values.author,
             text: values.commentText,
             date: new Date(Date.now()).toISOString(),
-        };
-        console.log("comment:", comment);
-        dispatch(addComment(comment));
-        setModalOpen(false);
-    };
+        }
+        console.log("comment:", comment)
+        dispatch(postComment(comment))
+        setModalOpen(false)
+    }
     return (
         <>
             <Button outline onClick={() => setModalOpen(true)}>
-                <i className="fa fa-pencil fa-lg" /> Add comment
+                <i className='fa fa-pencil fa-lg' /> Add comment
             </Button>
             <Modal isOpen={modalOpen}>
                 <ModalHeader toggle={() => setModalOpen(false)}>Add Comment</ModalHeader>
@@ -41,8 +41,8 @@ const CommentForm = ({ campsiteId }) => {
                     >
                         <Form>
                             <FormGroup>
-                                <Label htmlFor="rating">Rating</Label>
-                                <Field name="rating" as="select" className="form-control">
+                                <Label htmlFor='rating'>Rating</Label>
+                                <Field name='rating' as='select' className='form-control'>
                                     <option>Select...</option>
                                     <option>1</option>
                                     <option>2</option>
@@ -50,31 +50,31 @@ const CommentForm = ({ campsiteId }) => {
                                     <option>4</option>
                                     <option>5</option>
                                 </Field>
-                                <ErrorMessage name="rating">
-                                    {(msg) => <p className="text-danger">{msg}</p>}
+                                <ErrorMessage name='rating'>
+                                    {(msg) => <p className='text-danger'>{msg}</p>}
                                 </ErrorMessage>
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="author">Your Name</Label>
+                                <Label htmlFor='author'>Your Name</Label>
                                 <Field
-                                    name="author"
-                                    placeholder="Your Name"
-                                    className="form-control"
+                                    name='author'
+                                    placeholder='Your Name'
+                                    className='form-control'
                                 />
-                                <ErrorMessage name="author">
-                                    {(msg) => <p className="text-danger">{msg}</p>}
+                                <ErrorMessage name='author'>
+                                    {(msg) => <p className='text-danger'>{msg}</p>}
                                 </ErrorMessage>
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="commentText">Comment</Label>
+                                <Label htmlFor='commentText'>Comment</Label>
                                 <Field
-                                    name="commentText"
-                                    as="textarea"
-                                    rows="12"
-                                    className="form-control"
+                                    name='commentText'
+                                    as='textarea'
+                                    rows='12'
+                                    className='form-control'
                                 />
                             </FormGroup>
-                            <Button type="submit" color="primary">
+                            <Button type='submit' color='primary'>
                                 Submit
                             </Button>
                         </Form>
@@ -82,7 +82,7 @@ const CommentForm = ({ campsiteId }) => {
                 </ModalBody>
             </Modal>
         </>
-    );
-};
+    )
+}
 
-export default CommentForm;
+export default CommentForm
